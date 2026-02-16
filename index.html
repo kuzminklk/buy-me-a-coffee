@@ -9,22 +9,16 @@
 </head>
 <body>
 	<main>
-		<div class="header">
-			<h1>☕ Buy Me a Coffee</h1>
-			<p>Support the creator with Ethereum</p>
-		</div>
 
-		<div class="wallet-section">
-			<button id="connectButton">Connect Wallet</button>
-			<div class="button-group">
-				<button id="getBalanceButton">Get Balance</button>
-				<button id="withdrawButton">Withdraw</button>
-			</div>
-			<div id="balance"></div>
+		<button id="connectButton">Connect Wallet</button>
+		<div class="button-group">
+			<button id="getBalanceButton">Get Balance</button>
+			<button id="withdrawButton">Withdraw</button>
 		</div>
+		<span id="balance"></span>
 
-		<form class="fund-form">
-			<div class="form-group">
+		<form>
+			<div>
 				<label for="etherAmount">How much ETH would you like to send?</label>
 				<input 
 					type="number" 
@@ -34,8 +28,9 @@
 					min="0"
 				/>
 			</div>
-			<button type="button" id="fundButton">Buy a Coffee ☕</button>
+			<button type="button" id="fundButton">Buy a Coffee</button>
 		</form>
+
 	</main>
 </body>
 </html>
