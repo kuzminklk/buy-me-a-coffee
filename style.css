@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+/* ===================================================================
+   THEME VARIABLES
+   =================================================================== */
 :root {
   color-scheme: light;
   
@@ -58,6 +61,9 @@ html[data-theme="dark"] {
   --transition: all 0.1s linear;
 }
 
+/* ===================================================================
+   GLOBAL STYLES
+   =================================================================== */
 body {
   font-family: 'Press Start 2P', 'VT323', monospace;
   background: var(--bg-primary);
@@ -72,6 +78,9 @@ body {
   image-rendering: crisp-edges;
 }
 
+/* ===================================================================
+   MAIN CONTAINER
+   =================================================================== */
 main {
   max-width: 600px;
   margin: 60px auto;
@@ -83,7 +92,9 @@ main {
   position: relative;
 }
 
-/* Header Section */
+/* ===================================================================
+   HEADER SECTION
+   =================================================================== */
 .header {
   text-align: center;
   margin-bottom: 32px;
@@ -107,7 +118,27 @@ main {
   letter-spacing: 1px;
 }
 
-/* Form Styles */
+.balance-display {
+  margin-top: 16px;
+  padding: 8px 12px;
+  background: var(--balance-bg);
+  border: 2px solid var(--balance-border);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.1), 2px 2px 0px rgba(0, 0, 0, 0.2);
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s linear;
+}
+
+/* ===================================================================
+   FORM STYLES
+   =================================================================== */
 label {
   display: block;
   margin-bottom: 8px;
@@ -145,6 +176,9 @@ input[type="number"]:focus {
   margin-bottom: 20px;
 }
 
+/* ===================================================================
+   ANIMATIONS
+   =================================================================== */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -156,7 +190,9 @@ input[type="number"]:focus {
   }
 }
 
-/* Button Styles */
+/* ===================================================================
+   BUTTON STYLES
+   =================================================================== */
 button {
   padding: 8px 16px;
   border: 3px solid var(--border-color);
@@ -217,26 +253,6 @@ button {
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-/* Balance Display */
-#balance {
-  display: flex;
-  margin-top: 24px;
-  padding: 12px 16px;
-  background: var(--balance-bg);
-  border: 3px solid var(--balance-border);
-  border-radius: var(--border-radius);
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-primary);
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.2s linear;
-  letter-spacing: 1px;
-  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.15), 2px 2px 0px rgba(0, 0, 0, 0.2);
-  min-height: 40px;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -246,7 +262,9 @@ button {
   }
 }
 
-/* Responsive Design */
+/* ===================================================================
+   RESPONSIVE DESIGN
+   =================================================================== */
 @media (max-width: 600px) {
   main {
     padding: 24px 20px;
@@ -289,7 +307,9 @@ button {
   }
 }
 
-/* Utility Classes */
+/* ===================================================================
+   UTILITY CLASSES & THEME
+   =================================================================== */
 .button-group {
   display: flex;
   flex-direction: column;
