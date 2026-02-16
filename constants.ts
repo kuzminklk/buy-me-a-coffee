@@ -1,7 +1,8 @@
+import { Address, Abi } from "viem"
 
-export const contractAddress = "0x40687a9931f17c89d245dFB4a0A287F7745c0eE2";
+export const contractAddress: Address = "0x40687a9931f17c89d245dFB4a0A287F7745c0eE2"
 
-export const abi = [
+export const abi: Abi = [
     {
       "type": "constructor",
       "inputs": [
