@@ -5,36 +5,66 @@
 }
 
 :root {
-  --primary-color: #8b7ee8;
-  --secondary-color: #ffa397;
-  --accent-color: #ffe5d9;
-  --dark-bg: #0f0f1e;
-  --light-bg: #ffffff;
-  --text-dark: #2d2d44;
-  --text-light: #6b6b8e;
-  --border-color: #e8e8f5;
-  --success-color: #7dd3c0;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.15);
-  --border-radius: 12px;
+  color-scheme: light;
+  
+  /* Light Theme */
+  --bg-primary: #f5f3f0;
+  --bg-secondary: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --border-color: #2a2a2a;
+  --border-width: 2px;
+  --accent-primary: #2a2a2a;
+  --accent-secondary: #4a4a4a;
+  --button-primary-bg: #2a2a2a;
+  --button-primary-text: #f5f3f0;
+  --button-secondary-bg: #4a4a4a;
+  --button-secondary-text: #f5f3f0;
+  --balance-bg: #e8e3db;
+  --balance-border: #2a2a2a;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --border-radius: 0px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html[data-theme="dark"] {
+  color-scheme: dark;
+  
+  /* Dark Theme */
+  --bg-primary: #0a0a08;
+  --bg-secondary: #1a1915;
+  --text-primary: #f5f0e8;
+  --text-secondary: #d4ccc4;
+  --border-color: #f5f0e8;
+  --border-width: 1px;
+  --accent-primary: #f5f0e8;
+  --accent-secondary: #d4ccc4;
+  --button-primary-bg: #f5f0e8;
+  --button-primary-text: #0a0a08;
+  --button-secondary-bg: #d4ccc4;
+  --button-secondary-text: #0a0a08;
+  --balance-bg: #2a2520;
+  --balance-border: #f5f0e8;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #f5f5fb 0%, #ede7f6 100%);
-  color: var(--text-dark);
+  font-family: 'Courier New', Courier, monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
   padding: 20px;
+  transition: var(--transition);
 }
 
 main {
   max-width: 600px;
   margin: 60px auto;
-  background: var(--light-bg);
-  border-radius: var(--border-radius);
+  background: var(--bg-secondary);
+  border: var(--border-width) solid var(--border-color);
   box-shadow: var(--shadow-lg);
   padding: 48px;
   animation: slideUp 0.6s ease-out;
@@ -45,39 +75,58 @@ main {
   text-align: center;
   margin-bottom: 40px;
   padding-bottom: 24px;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .header h1 {
-  font-size: 32px;
-  color: var(--text-dark);
+  font-size: 28px;
+  color: var(--text-primary);
   margin-bottom: 8px;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .header p {
-  color: var(--text-light);
-  font-size: 16px;
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
-/* Wallet Section */
-.wallet-section {
-  margin-bottom: 24px;
+/* Form Styles */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Form Group */
-.form-group {
-  margin-bottom: 24px;
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-family: inherit;
+  margin-bottom: 16px;
+  transition: var(--transition);
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-.fund-form {
-  margin-top: 32px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border-color);
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px var(--text-primary);
+}
+
+#etherAmount {
+  margin-bottom: 20px;
 }
 
 @keyframes slideUp {
@@ -94,20 +143,22 @@ main {
 /* Button Styles */
 button {
   padding: 12px 24px;
-  border: none;
+  border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   font-family: inherit;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 #connectButton,
 #getBalanceButton,
 #withdrawButton {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #7c6fd8 100%);
-  color: white;
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
   width: 100%;
   margin-bottom: 12px;
   box-shadow: var(--shadow-sm);
@@ -116,9 +167,10 @@ button {
 #connectButton:hover,
 #getBalanceButton:hover,
 #withdrawButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-  background: linear-gradient(135deg, #7c6fd8 0%, #6b5ec3 100%);
+  background: var(--accent-secondary);
+  color: var(--button-primary-text);
 }
 
 #connectButton:active,
@@ -127,53 +179,18 @@ button {
   transform: translateY(0);
 }
 
-/* Form Styles */
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: var(--text-dark);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 14px 16px;
-  border: 2px solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-size: 16px;
-  font-family: inherit;
-  margin-bottom: 16px;
-  transition: var(--transition);
-  background: #fafbfc;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(139, 126, 232, 0.1);
-}
-
-#etherAmount {
-  margin-bottom: 20px;
-}
-
 #fundButton {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, #ff8f81 100%);
-  color: white;
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
   width: 100%;
   box-shadow: var(--shadow-sm);
 }
 
 #fundButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-  background: linear-gradient(135deg, #ff8f81 0%, #ff7b6d 100%);
+  background: var(--accent-primary);
+  color: var(--button-secondary-text);
 }
 
 #fundButton:active {
@@ -185,17 +202,19 @@ input[type="number"]:focus {
   display: block;
   margin-top: 24px;
   padding: 16px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, #ffd9c8 100%);
+  background: var(--balance-bg);
+  border: var(--border-width) solid var(--balance-border);
   border-radius: var(--border-radius);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-primary);
   text-align: center;
   min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.5s ease-out;
+  letter-spacing: 0.5px;
 }
 
 @keyframes fadeIn {
@@ -215,18 +234,18 @@ input[type="number"]:focus {
   }
 
   button {
-    padding: 14px 20px;
-    font-size: 15px;
+    padding: 12px 20px;
+    font-size: 13px;
   }
 
   input[type="text"],
   input[type="number"] {
     padding: 12px 14px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   label {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 
@@ -248,6 +267,44 @@ input[type="number"]:focus {
   gap: 12px;
 }
 
+.wallet-section {
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.fund-form {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: var(--border-width) solid var(--border-color);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border: var(--border-width) solid var(--border-color);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -256,6 +313,6 @@ html {
 /* Focus visible for accessibility */
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--text-primary);
   outline-offset: 2px;
 }

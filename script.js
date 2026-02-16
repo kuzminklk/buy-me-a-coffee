@@ -4,6 +4,44 @@ import { createWalletClient, createPublicClient, parseEther, formatEther, custom
 import { sepolia } from "https://esm.sh/viem/chains"
 import { contractAddress, abi } from "./constants.js"
 
+// === Theme Toggle Functionality ===
+const themeToggle = document.getElementById("themeToggle")
+const htmlElement = document.documentElement
+
+// Initialize theme from localStorage or system preference
+const initializeTheme = () => {
+	const savedTheme = localStorage.getItem("theme")
+	const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+	const initialTheme = savedTheme || (systemDarkMode ? "dark" : "light")
+	
+	htmlElement.setAttribute("data-theme", initialTheme)
+	updateThemeToggleButton(initialTheme)
+}
+
+// Update theme toggle button text
+const updateThemeToggleButton = (theme) => {
+	if (theme === "dark") {
+		themeToggle.innerText = "☀️ Light"
+	} else {
+		themeToggle.innerText = "🌙 Dark"
+	}
+}
+
+// Toggle theme
+const toggleTheme = () => {
+	const currentTheme = htmlElement.getAttribute("data-theme") || "light"
+	const newTheme = currentTheme === "light" ? "dark" : "light"
+	
+	htmlElement.setAttribute("data-theme", newTheme)
+	localStorage.setItem("theme", newTheme)
+	updateThemeToggleButton(newTheme)
+}
+
+themeToggle.addEventListener("click", toggleTheme)
+initializeTheme()
+
+// === Wallet & Contract Functionality ===
+
 
 const connectButton = document.getElementById("connectButton")
 const fundButton = document.getElementById("fundButton")
