@@ -1,24 +1,36 @@
-// ============================================================================
-// IMPORTS
-// ============================================================================
+
+
+/* 
+	Structure
+
+		DOM Elements
+		Configuration
+		State
+	Theme Toggle
+	Contract Interactions
+		Event Listeners
+	Initialization
+
+*/
+
+
 import { createWalletClient, createPublicClient, parseEther, formatEther, custom } from "https://esm.sh/viem"
 import { sepolia } from "https://esm.sh/viem/chains"
 import { contractAddress, abi } from "./constants.js"
 
-// ============================================================================
-// DOM ELEMENTS
-// ============================================================================
-const themeToggle = document.getElementById("themeToggle")
-const connectButton = document.getElementById("connectButton")
-const fundButton = document.getElementById("fundButton")
-const withdrawButton = document.getElementById("withdrawButton")
+
+
+// DOM Elements
+const themeToggle = document.getElementById("theme-toggle")
+const connectButton = document.getElementById("connect-button")
+const fundButton = document.getElementById("fund-button")
+const withdrawButton = document.getElementById("withdraw-button")
 const balanceDisplay = document.getElementById("balance")
-const etherAmountInput = document.getElementById("etherAmount")
+const etherAmountInput = document.getElementById("ether-amount")
 const htmlElement = document.documentElement
 
-// ============================================================================
-// CONFIGURATION
-// ============================================================================
+
+// Configuration
 const clientConfig = {
 	transport: custom(window.ethereum),
 	chain: sepolia
@@ -26,16 +38,14 @@ const clientConfig = {
 
 const BALANCE_UPDATE_INTERVAL = 5000 // 5 seconds
 
-// ============================================================================
-// STATE
-// ============================================================================
+
+// State
 let walletClient = null
 let publicClient = null
 let connectedAccount = null
 
-// ============================================================================
-// THEME TOGGLE
-// ============================================================================
+
+// ——— Theme Toggle ———
 
 /**
  * Initialize theme from localStorage or system preference
@@ -68,9 +78,8 @@ const toggleTheme = () => {
 	updateThemeToggleButton(newTheme)
 }
 
-// ============================================================================
-// CONTRACT INTERACTIONS
-// ============================================================================
+
+// ——— Contract Interactions ———
 
 /**
  * Initialize wallet client
@@ -180,18 +189,15 @@ const withdraw = async () => {
 	}
 }
 
-// ============================================================================
-// EVENT LISTENERS
-// ============================================================================
 
+// Event Listeners
 themeToggle.addEventListener("click", toggleTheme)
 connectButton.addEventListener("click", connectWallet)
 fundButton.addEventListener("click", fund)
 withdrawButton.addEventListener("click", withdraw)
 
-// ============================================================================
-// INITIALIZATION
-// ============================================================================
+
+// ——— Initialization ———
 
 /**
  * Initialize the application on page load

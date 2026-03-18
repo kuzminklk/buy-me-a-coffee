@@ -1,12 +1,29 @@
+
+
+/*
+	Structure
+
+	Colors
+	Typography
+	Layout
+		Header
+		Form
+		Buttons
+	Responsive Design
+	Theme Toggle
+
+*/
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===================================================================
-   THEME VARIABLES
-   =================================================================== */
+
+/* ————————— Colors ————————— */
+
 :root {
   color-scheme: light;
   
@@ -61,9 +78,17 @@ html[data-theme="dark"] {
   --transition: all 0.1s linear;
 }
 
-/* ===================================================================
-   GLOBAL STYLES
-   =================================================================== */
+
+/* ————————— Typography ————————— */
+
+
+/* ————————— Layout ————————— */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Press Start 2P', 'VT323', monospace;
   background: var(--bg-primary);
@@ -75,12 +100,10 @@ body {
   font-size: 10px;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
-/* ===================================================================
-   MAIN CONTAINER
-   =================================================================== */
 main {
   max-width: 600px;
   margin: 60px auto;
@@ -92,17 +115,32 @@ main {
   position: relative;
 }
 
-/* ===================================================================
-   HEADER SECTION
-   =================================================================== */
-.header {
+section.connect-wallet {
+  margin-bottom: 24px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ——— Header ——— */
+
+header {
   text-align: center;
   margin-bottom: 32px;
   padding-bottom: 20px;
   border-bottom: 3px solid var(--border-color);
 }
 
-.header h1 {
+header h1 {
   font-size: 20px;
   color: var(--text-primary);
   margin-bottom: 12px;
@@ -111,7 +149,7 @@ main {
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
-.header p {
+header p {
   color: var(--text-secondary);
   font-size: 8px;
   font-weight: 400;
@@ -136,9 +174,13 @@ main {
   animation: fadeIn 0.2s linear;
 }
 
-/* ===================================================================
-   FORM STYLES
-   =================================================================== */
+
+/* ——— Form ——— */
+
+.form-group {
+  margin-bottom: 24px;
+}
+
 label {
   display: block;
   margin-bottom: 8px;
@@ -172,27 +214,20 @@ input[type="number"]:focus {
   box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.1), 0 0 0 2px var(--highlight-color);
 }
 
-#etherAmount {
+#ether-amount {
   margin-bottom: 20px;
 }
 
-/* ===================================================================
-   ANIMATIONS
-   =================================================================== */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+/* ——— Buttons ——— */
+
+/* Focus visible for accessibility */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 
-/* ===================================================================
-   BUTTON STYLES
-   =================================================================== */
 button {
   padding: 8px 16px;
   border: 3px solid var(--border-color);
@@ -208,9 +243,8 @@ button {
   position: relative;
 }
 
-#connectButton,
-#getBalanceButton,
-#withdrawButton {
+#connect-button,
+#withdraw-button {
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
   width: 100%;
@@ -218,39 +252,43 @@ button {
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-#connectButton:hover,
-#getBalanceButton:hover,
-#withdrawButton:hover {
+#connect-button:hover,
+#withdraw-button:hover {
   transform: translate(1px, 1px);
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
   background: var(--accent-secondary);
   color: var(--button-primary-text);
 }
 
-#connectButton:active,
-#getBalanceButton:active,
-#withdrawButton:active {
+#connect-button:active,
+#withdraw-button:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-#fundButton {
+#fund-button {
   background: var(--button-secondary-bg);
   color: var(--button-secondary-text);
   width: 100%;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-#fundButton:hover {
+#fund-button:hover {
   transform: translate(1px, 1px);
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
   background: var(--accent-primary);
   color: var(--button-secondary-text);
 }
 
-#fundButton:active {
+#fund-button:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 @keyframes fadeIn {
@@ -262,9 +300,9 @@ button {
   }
 }
 
-/* ===================================================================
-   RESPONSIVE DESIGN
-   =================================================================== */
+
+/* ————————— Responsive Design ————————— */
+
 @media (max-width: 600px) {
   main {
     padding: 24px 20px;
@@ -286,7 +324,7 @@ button {
     font-size: 7px;
   }
 
-  .header h1 {
+  header h1 {
     font-size: 16px;
   }
 }
@@ -301,37 +339,16 @@ button {
     padding: 8px;
   }
 
-  .theme-toggle {
+  #theme-toggle {
     padding: 6px 10px;
     font-size: 7px;
   }
 }
 
-/* ===================================================================
-   UTILITY CLASSES & THEME
-   =================================================================== */
-.button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
-.wallet-section {
-  margin-bottom: 24px;
-}
+/* ————————— Theme Toggle ————————— */
 
-.form-group {
-  margin-bottom: 24px;
-}
-
-.fund-form {
-  margin-top: 32px;
-  padding-top: 32px;
-  border-top: 3px solid var(--border-color);
-}
-
-/* Theme Toggle */
-.theme-toggle {
+#theme-toggle {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -350,19 +367,7 @@ button {
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-.theme-toggle:hover {
+#theme-toggle:hover {
   transform: translate(1px, 1px);
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Focus visible for accessibility */
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--text-primary);
-  outline-offset: 2px;
 }
