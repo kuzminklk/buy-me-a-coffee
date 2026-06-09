@@ -11,7 +11,7 @@ HTML, CSS, JavaScript, viem
 
 
 ### Status
-Finished, deployed
+Finished, deployed at Vercel
 
 ### Development Path
 1. Develop core functionality during course (naked)
