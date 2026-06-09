@@ -1,12 +1,17 @@
 
-### Source
-Study project from Cyfrin Updraft Full-Stack Web-3 course
 
 ### Description
 Web UI for interaction with «Buy Me A Coffee» Smart Contract
 
+### Purpose
+Part of Full-stack Web 3 course from Cyfrin Updraft and as submodule in [appropriate repository](https://github.com/kuzminklk/cyfrin-updraft)  
+
 ### Technologies
 HTML, CSS, JavaScript, viem
+
+
+### Status
+Finished, deployed
 
 ### Development Path
 1. Develop core functionality during course (naked)
