@@ -11,7 +11,7 @@ HTML, CSS, JavaScript, viem
 
 
 ### Status
-Finished, deployed at Vercel
+Finished, deployed [at Vercel](https://buy-me-a-coffee-pixelated.vercel.app/)
 
 ### Development Path
 1. Develop core functionality during course (naked)
@@ -25,3 +25,6 @@ Finished, deployed at Vercel
 - naked
 - naked-ts
 - dark-brown
+
+### Deployments
+[At Vercel](https://buy-me-a-coffee-pixelated.vercel.app/)
