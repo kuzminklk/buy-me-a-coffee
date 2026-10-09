@@ -1,6 +1,4 @@
-
-
-/* 
+/*
 	Structure
 
 		DOM Elements
@@ -13,12 +11,9 @@
 
 */
 
-
 import { createWalletClient, createPublicClient, parseEther, formatEther, custom } from "https://esm.sh/viem"
 import { sepolia } from "https://esm.sh/viem/chains"
 import { contractAddress, abi } from "./constants.js"
-
-
 
 // DOM Elements
 const themeToggle = document.getElementById("theme-toggle")
@@ -29,21 +24,18 @@ const balanceDisplay = document.getElementById("balance")
 const etherAmountInput = document.getElementById("ether-amount")
 const htmlElement = document.documentElement
 
-
 // Configuration
 const clientConfig = {
 	transport: custom(window.ethereum),
-	chain: sepolia
+	chain: sepolia,
 }
 
 const BALANCE_UPDATE_INTERVAL = 5000 // 5 seconds
-
 
 // State
 let walletClient = null
 let publicClient = null
 let connectedAccount = null
-
 
 // ——— Theme Toggle ———
 
@@ -54,7 +46,7 @@ const initializeTheme = () => {
 	const savedTheme = localStorage.getItem("theme")
 	const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
 	const initialTheme = savedTheme || (systemDarkMode ? "dark" : "light")
-	
+
 	htmlElement.setAttribute("data-theme", initialTheme)
 	updateThemeToggleButton(initialTheme)
 }
@@ -72,12 +64,11 @@ const updateThemeToggleButton = (theme) => {
 const toggleTheme = () => {
 	const currentTheme = htmlElement.getAttribute("data-theme") || "light"
 	const newTheme = currentTheme === "light" ? "dark" : "light"
-	
+
 	htmlElement.setAttribute("data-theme", newTheme)
 	localStorage.setItem("theme", newTheme)
 	updateThemeToggleButton(newTheme)
 }
-
 
 // ——— Contract Interactions ———
 
@@ -103,7 +94,7 @@ const connectWallet = async () => {
 	if (!isReady) return
 
 	try {
-		[connectedAccount] = await walletClient.requestAddresses()
+		;[connectedAccount] = await walletClient.requestAddresses()
 		connectButton.innerText = "Connected"
 	} catch (error) {
 		console.error("Failed to connect wallet:", error)
@@ -121,7 +112,7 @@ const updateBalance = async () => {
 		}
 
 		const balance = await publicClient.getBalance({
-			address: contractAddress
+			address: contractAddress,
 		})
 
 		const formattedBalance = formatEther(balance)
@@ -150,11 +141,11 @@ const fund = async () => {
 			functionName: "fund",
 			account: connectedAccount,
 			chain: sepolia,
-			value: parseEther(etherAmount)
+			value: parseEther(etherAmount),
 		})
 
 		await walletClient.writeContract(request)
-		
+
 		// Update balance after successful transaction
 		setTimeout(updateBalance, 2000)
 	} catch (error) {
@@ -177,11 +168,11 @@ const withdraw = async () => {
 			abi: abi,
 			functionName: "withdraw",
 			account: connectedAccount,
-			chain: sepolia
+			chain: sepolia,
 		})
 
 		await walletClient.writeContract(request)
-		
+
 		// Update balance after successful transaction
 		setTimeout(updateBalance, 2000)
 	} catch (error) {
@@ -189,13 +180,11 @@ const withdraw = async () => {
 	}
 }
 
-
 // Event Listeners
 themeToggle.addEventListener("click", toggleTheme)
 connectButton.addEventListener("click", connectWallet)
 fundButton.addEventListener("click", fund)
 withdrawButton.addEventListener("click", withdraw)
-
 
 // ——— Initialization ———
 
