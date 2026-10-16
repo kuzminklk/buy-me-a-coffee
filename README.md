@@ -22,7 +22,7 @@ Formatting: “.editorconfig”, “.vscode/…”, Foundry, Prettier
 
 Finished, deployed [at Vercel](https://buy-me-a-coffee-pixelated.vercel.app/)
 
-### Development Path
+### Path
 
 1. Develop core functionality during course (naked)
 2. Do visual redesign via GitHub Copolot agent mode (Claude Haiky 4.5) (dark-brown)
