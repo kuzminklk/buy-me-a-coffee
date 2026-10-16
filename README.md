@@ -11,7 +11,7 @@ Part of Full-stack Web 3 course from Cyfrin Updraft and as submodule in [appropr
 ### Technologies
 
 Development: Visual Studio Code  
-Markup: HTML, CSS  
+Markup languages: HTML, CSS  
 Programming language: JavaScript  
 Libraries: Viem  
 Formatting: “.editorconfig”, “.vscode/…”, Foundry, Prettier
